@@ -1,12 +1,9 @@
-import react from "react"
+import React from "react"
+import Quote from "./Quote"
 
 const AllQuotes = (props) => {
-    return (
-    <>
-        <h1>All Quotes!!!</h1>
-        <h1>All Quotes</h1>
-    </>
-    )
+    return props.quotes.map((quote) => <Quote quote={quote} key={quote.id} />)
+    
 }
 
 export default AllQuotes

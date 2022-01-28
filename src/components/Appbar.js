@@ -14,7 +14,7 @@ export default function ButtonAppBar() {
         >
           <Button
             variant="h3" 
-            Size="large"
+            size="large"
             sx={{
                 fontSize:"large",
             }}

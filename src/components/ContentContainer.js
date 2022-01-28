@@ -1,10 +1,9 @@
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import AllQuotes from '../components/AllQuotes.js'
 
-export default function ContentContainer() {
+export default function ContentContainer({quotes}) {
   return (
     <React.Fragment>
       <CssBaseline />
@@ -15,7 +14,7 @@ export default function ContentContainer() {
             display: 'inline-flex',
             flexGrow:1
         }} >
-      <AllQuotes />
+      <AllQuotes quotes={quotes}/>
       </Container>
     </React.Fragment>
   );
