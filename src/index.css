@@ -2,4 +2,6 @@ body {
   margin: 0;
 }
 
-
+.Dashboard-Container {
+  flex-direction: row;
+}
