@@ -57,6 +57,15 @@ const updateMessage = async (message) => {
   getMessages()
 }
 
+const deleteMessage = async (message) => {
+  const response = await fetch(url + message.id + '/', {
+    method: 'DELETE',
+  })
+
+  getMessages()
+  props.history.push('/')
+}
+
 // useEffects
 useEffect(() => {
   getMessages()
@@ -71,17 +80,22 @@ useEffect(() => {
             exact
             path="/"
             render={(routerProps) => { 
-            return <Dashboard {...routerProps} messages={messages} />
+            return <Dashboard 
+            {...routerProps} 
+            messages={messages} 
+        />
           }}
           />
         <Route 
           path="/message/:id"
           render={(routerProps) => {
-            return <SingleQuote {...routerProps}
+            return <SingleQuote 
+            {...routerProps}
             messages={messages} 
             handleSubmit={addMessages}
             edit={getTargetMessage}
-            />
+            deleteMessage={deleteMessage}
+        />
           }}
         />
         <Route 
