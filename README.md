@@ -27,10 +27,12 @@ Dependencies
      mui/icon
  
  RUN SERVER 
- Start with npm start
+ 
+    Start with npm start
  
  DEPLOYMENT
- Deployed on netlify
+ 
+     Deployed on netlify
 
 RESOURCES
 Figma styling
