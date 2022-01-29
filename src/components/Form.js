@@ -18,13 +18,13 @@ return (
         <input
             type="text"
             onChange={handleChange}
-            value={formData.author}
+            // value={formData.author}
             name="author"
         />
         <input
             type="text"
             onChange={handleChange}
-            value={formData.message}
+            // value={formData.message}
             name="message"
         />
         <input type="submit" value={buttonLabel} />

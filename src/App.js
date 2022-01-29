@@ -16,7 +16,7 @@ const url = 'https://ruby-api-stoic-quotes.herokuapp.com/greeks/'
 
 const [messages, setMessages] = useState([])
 
-const nullMessages = {
+const nullMessage = {
   author: "",
   message: "",
 }
@@ -71,7 +71,7 @@ useEffect(() => {
           render={(routerProps) => 
           <Form 
             {...routerProps}
-            initialQuote={nullMessages}
+            initialQuote={nullMessage}
             handleSubmit={addMessages}
             buttonLabel="create message"
           />
