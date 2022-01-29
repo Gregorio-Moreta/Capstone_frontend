@@ -3,7 +3,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import AllQuotes from '../components/AllQuotes.js'
 
-export default function ContentContainer({quotes}) {
+export default function ContentContainer({messages}) {
   return (
     <React.Fragment>
       <CssBaseline />
@@ -13,7 +13,7 @@ export default function ContentContainer({quotes}) {
             display: 'flex',
             flexWrap: 'wrap',
         }} >
-      <AllQuotes quotes={quotes}
+      <AllQuotes messages={messages}
       />
       </Container>
     </React.Fragment>

@@ -4,8 +4,8 @@ import { Container } from '@mui/material';
 import ContentContainer from '../components/ContentContainer';
 import {Box} from '@mui/material';
 
-export default function Dashboard({quotes}) {
-  console.log(quotes)
+export default function Dashboard({messages}) {
+  console.log(messages)
   return (
     <>
         <ButtonAppBar />
@@ -23,7 +23,7 @@ export default function Dashboard({quotes}) {
         position="sticky"
         />
         </Box>
-        <ContentContainer quotes={quotes} />
+        <ContentContainer messages={messages} />
         </Container>
 
     </>

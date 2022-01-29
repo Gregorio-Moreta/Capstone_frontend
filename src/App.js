@@ -12,56 +12,56 @@ function App(props) {
 // State and other variables
 
 // Api url
-const url = 'https://ruby-api-stoic-quotes.herokuapp.com/quotes/'
+const url = 'https://ruby-api-stoic-quotes.herokuapp.com/greeks/'
 
-const [quotes, setQuotes] = useState([])
+const [messages, setMessages] = useState([])
 
-const nullQuote = {
+const nullMessages = {
   author: "",
-  quote: "",
+  message: "",
 }
 
 // Functions
-const getQuotes = async() => {
+const getMessages = async() => {
   const response = await fetch(url)
   const data = await response.json()
-  setQuotes(data)
+  setMessages(data)
 }
 
-const addQuotes = async (newQuote) => {
+const addMessages = async (newMessage) => {
   const response = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(newQuote),
+    body: JSON.stringify(newMessage),
   })
-  getQuotes()
+  getMessages()
 }
 
 // useEffects
 useEffect(() => {
-  getQuotes()
+  getMessages()
 }, [])
 
 // returnedJSX
   return (
     <div className="App">
-      <Link to='/new'><button>Make a new quote</button></Link>
+      <Link to='/new'><button>Make a new message</button></Link>
       <Switch>
         <Route
             exact
             path="/"
             render={(routerProps) => { 
-            return <Dashboard {...routerProps} quotes={quotes} />
+            return <Dashboard {...routerProps} messages={messages} />
           }}
           />
         <Route 
-          path="/quote/:id"
+          path="/message/:id"
           render={(routerProps) => {
             return <SingleQuote {...routerProps}
-            quotes={quotes} 
-            handleSubmit={addQuotes}
+            messages={messages} 
+            handleSubmit={addMessages}
 
             />
           }}
@@ -71,9 +71,9 @@ useEffect(() => {
           render={(routerProps) => 
           <Form 
             {...routerProps}
-            initialQuote={nullQuote}
-            handleSubmit={addQuotes}
-            buttonLabel="create quote"
+            initialQuote={nullMessages}
+            handleSubmit={addMessages}
+            buttonLabel="create message"
           />
           } 
         />

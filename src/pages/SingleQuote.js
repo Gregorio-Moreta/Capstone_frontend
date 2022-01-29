@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SingleQuote = ({ quotes, match }) => {
+const SingleQuote = ({ messages, match }) => {
     const id = parseInt(match.params.id)
-    const quote = quotes.find((quote) => quote.id ===id )
+    const message = messages.find((message) => message.id ===id )
 
 return (
     <div>
-        <h1>{quote?.author}</h1>
-        <h2>{quote?.quote}</h2>
+        <h1>{message?.author}</h1>
+        <h2>{message?.message}</h2>
         <Link to="/">
             <button>Home</button>
         </Link>

@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 
 import { Link } from "react-router-dom"
 
-const Quote = ({quote}) => {
+const Quote = ({message}) => {
     return (
         <Grid rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <Box
@@ -30,7 +30,7 @@ const Quote = ({quote}) => {
                     height: 300,
                 }}
                 >
-            <Link to = {`/quote/${quote.id}`}>
+            <Link to = {`/message/${message.id}`}>
                 <Paper>
                     <Typography
                     sx={{
@@ -40,7 +40,7 @@ const Quote = ({quote}) => {
                         p:1
                     }}
                     >
-                        {quote.author}
+                        {message.author}
                     </Typography>
                 </Paper>
             </Link>
@@ -52,7 +52,7 @@ const Quote = ({quote}) => {
                         height: 150,
                         p:3,
                     }}>
-                            {quote.quote}
+                            {message.message}
                     </Typography>
                 </Paper>
             </Box>

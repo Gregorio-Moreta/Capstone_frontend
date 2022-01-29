@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 
-const Form = ({ initialQuote, handleSubmit, buttonLabel, history }) => {
-    const [formData, setFormData] = useState(initialQuote)
+const Form = ({ initialMessage, handleSubmit, buttonLabel, history }) => {
+    const [formData, setFormData] = useState(initialMessage)
     const handleChange = (event) => {
         setFormData({...formData, [event.target.name]: event.target.value})
     }
@@ -24,8 +24,8 @@ return (
         <input
             type="text"
             onChange={handleChange}
-            value={formData.quote}
-            name="quote"
+            value={formData.message}
+            name="message"
         />
         <input type="submit" value={buttonLabel} />
     </form>
