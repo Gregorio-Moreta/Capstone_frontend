@@ -18,11 +18,13 @@ Dependencies
     "web-vitals": "^2.1.4"
  
  TECHNOLOGY
- react 
- js
- html
- css
- mui
+ 
+     react 
+     js
+     html
+     css
+     mui
+     mui/icon
  
  RUN SERVER 
  Start with npm start
