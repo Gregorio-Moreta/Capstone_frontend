@@ -10,11 +10,11 @@ export default function ContentContainer({quotes}) {
       <Container
       sx={{ 
             bgcolor: '#cfe8fc', 
-            height: '100vh',
-            display: 'inline-flex',
-            flexGrow:1
+            display: 'flex',
+            flexWrap: 'wrap',
         }} >
-      <AllQuotes quotes={quotes}/>
+      <AllQuotes quotes={quotes}
+      />
       </Container>
     </React.Fragment>
   );

@@ -12,7 +12,7 @@ export default function Dashboard({quotes}) {
         <Container
             maxWidth='100vw'
             sx={{ 
-                // backgroundColor:"blue",
+                backgroundColor:"blue",
                 display:"inline-flex"
             }}
         >
@@ -20,6 +20,7 @@ export default function Dashboard({quotes}) {
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/L%27Image_et_le_Pouvoir_-_Buste_cuirass%C3%A9_de_Marc_Aur%C3%A8le_ag%C3%A9_-_2.jpg/599px-L%27Image_et_le_Pouvoir_-_Buste_cuirass%C3%A9_de_Marc_Aur%C3%A8le_ag%C3%A9_-_2.jpg"
         width="100%" height="976px"
         alt="stoic"
+        position="sticky"
         />
         </Box>
         <ContentContainer quotes={quotes} />

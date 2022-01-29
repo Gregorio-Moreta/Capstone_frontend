@@ -1,7 +1,8 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
+import SingleQuote from './pages/SingleQuote';
 import AllQuotes from './components/AllQuotes';
 import Form from './components/Form';
 import Quote from './components/Quote'
@@ -15,6 +16,11 @@ const url = 'https://ruby-api-stoic-quotes.herokuapp.com/quotes/'
 
 const [quotes, setQuotes] = useState([])
 
+const nullQuote = {
+  author: "",
+  quote: "",
+}
+
 // Functions
 const getQuotes = async() => {
   const response = await fetch(url)
@@ -22,6 +28,16 @@ const getQuotes = async() => {
   setQuotes(data)
 }
 
+const addQuotes = async (newQuote) => {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newQuote),
+  })
+  getQuotes()
+}
 
 // useEffects
 useEffect(() => {
@@ -31,20 +47,36 @@ useEffect(() => {
 // returnedJSX
   return (
     <div className="App">
+      <Link to='/new'><button>Make a new quote</button></Link>
       <Switch>
         <Route
+            exact
             path="/"
             render={(routerProps) => { 
-            <Dashboard {...routerProps} quotes={quotes} />
+            return <Dashboard {...routerProps} quotes={quotes} />
           }}
           />
-        {/* <Route 
-          path="/Favorites"
+        <Route 
+          path="/quote/:id"
           render={(routerProps) => {
-            return <AllQuotes {...routerProps}  />
+            return <SingleQuote {...routerProps}
+            quotes={quotes} 
+            handleSubmit={addQuotes}
+
+            />
           }}
         />
-        <Route /> */}
+        <Route 
+          path='/new'
+          render={(routerProps) => 
+          <Form 
+            {...routerProps}
+            initialQuote={nullQuote}
+            handleSubmit={addQuotes}
+            buttonLabel="create quote"
+          />
+          } 
+        />
       </Switch>
     </div>
   );
