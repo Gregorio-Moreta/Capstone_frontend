@@ -21,6 +21,8 @@ const nullMessage = {
   message: "",
 }
 
+const [ targetMessage, setTargetMessage ] = useState(nullMessage)
+
 // Functions
 const getMessages = async() => {
   const response = await fetch(url)
@@ -35,6 +37,22 @@ const addMessages = async (newMessage) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(newMessage),
+  })
+  getMessages()
+}
+
+const getTargetMessage = (message) => {
+  setTargetMessage(message)
+  props.history.push('/edit')
+}
+
+const updateMessage = async (message) => {
+  const response = await fetch(url + message.id + '/', {
+    method: 'PUT',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(message)
   })
   getMessages()
 }
@@ -62,7 +80,7 @@ useEffect(() => {
             return <SingleQuote {...routerProps}
             messages={messages} 
             handleSubmit={addMessages}
-
+            edit={getTargetMessage}
             />
           }}
         />
@@ -71,11 +89,22 @@ useEffect(() => {
           render={(routerProps) => 
           <Form 
             {...routerProps}
-            initialQuote={nullMessage}
+            initialMessage={nullMessage}
             handleSubmit={addMessages}
             buttonLabel="create message"
           />
           } 
+        />
+        <Route 
+          path='/edit'
+          render={(routerProps) => (
+            <Form
+              {...routerProps} 
+              initialMessage={targetMessage}
+              handleSubmit={updateMessage}
+              buttonLabel='update message'
+            />
+          )}
         />
       </Switch>
     </div>
